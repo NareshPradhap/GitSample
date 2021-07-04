@@ -109,7 +109,7 @@ public class TaskPara extends TaskBase {
 
 	}
 	
-	@Test
+@Test
 	
 	private void test3() throws IOException, InterruptedException {
 		System.out.println("Test 2");
