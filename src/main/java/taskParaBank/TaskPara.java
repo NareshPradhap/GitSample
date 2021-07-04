@@ -106,12 +106,40 @@ public class TaskPara extends TaskBase {
 		getValueExcel(0, 0, text);
 		
 		
-		
-		
-		
-		
 
 	}
+	
+	@Test
+	
+	private void test3() throws IOException, InterruptedException {
+		System.out.println("Test 2");
+		
+		insertType(new TaskPom().getTxtUserName(), getData(0, 0));
+		insertType(new TaskPom().getTxtpass(), "17Jun");
+		click(new TaskPom().getBtnLogin());
+		Thread.sleep(3000);
+		
+		click(new TaskPom().getNewAcct());
+		
+		Thread.sleep(3000);
+		
+		WebElement acctType = driver.findElement(By.id("type"));
+		Select s = new Select(acctType);
+		s.selectByVisibleText("SAVINGS");
+		
+		WebElement chooseAcct = driver.findElement(By.id("fromAccountId"));
+		Select s1 = new Select(chooseAcct);
+		s1.selectByIndex(1);
+		
+		click(new TaskPom().getBtnOpenNewAcct());
+		String currentUrl = getCurrentUrl();
+		Assert.assertTrue(currentUrl.contains("openaccount"), "New account is not created.");
+		Thread.sleep(3000);
+		
+		WebElement newAcctId = driver.findElement(By.id("newAccountId"));
+		String text = newAcctId.getText();
+		System.out.println(text);
+		getValueExcel(0, 0, text);
 	
 
 
